@@ -59,7 +59,7 @@ function Button() {
 
 function openLink(url) {
     const titleAndAuthor = `${document.querySelector('.Text__title1').textContent} ${document.querySelector('.ContributorLink__name').textContent}`;
-    const finalUrl = url + titleAndAuthor;
+    const finalUrl = url + encodeURIComponent(titleAndAuthor);
 
     return window.open(finalUrl, '_blank');
 }
