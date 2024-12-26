@@ -1,24 +1,16 @@
-function Button() {
+function Button(text, icon, link) {
     return DIV(
         DIV(
-            [DIV(
+            DIV(
                 BUTTON(
-                    SPAN('Download', 'Button__labelItem'),
-                    'https://annas-archive.org/search?q=',
+                    SPAN(text, 'Button__labelItem'),
+                    SPAN(icon, '', 'position: absolute; right: 1.5rem;'),
+                    link,
                     'Button Button--buy Button--medium Button--block dl-button',
                     'background: black; color: white; border: none; outline: none; box-shadow: none; user-select: none;'
                 ),
                 'Button__container Button__container--block',
-            ), 
-            DIV(
-                BUTTON(
-                    SPAN('💀', 'Button__labelItem'),
-                    'https://libgen.li/index.php?req=',
-                    'Button Button--buy Button--medium Button--rounded dl-button',
-                    'background: black; border: none; color: white; border-left: 1px solid white; outline: none; box-shadow: none; user-select: none;'
-                ),
-                'Button__container',
-            )],
+            ),
             'ButtonGroup ButtonGroup--block',
         ),
         'BookActions__button'
@@ -27,26 +19,28 @@ function Button() {
 
 function openLink(url) {
     const titleAndAuthor = `${document.querySelector('.Text__title1').textContent} ${document.querySelector('.ContributorLink__name').textContent}`;
-    const finalUrl = `${url}${encodeURIComponent(titleAndAuthor)}`;
+    const finalUrl = `${url}${titleAndAuthor.replace(/ /g, '+')}`.toLowerCase();
 
     return window.open(finalUrl, '_blank');
 }
 
-function SPAN(textContent, className) {
+function SPAN(textContent, className, cssText) {
     const span = document.createElement('span');
     span.textContent = textContent;
     span.className = className;
+    span.style.cssText = cssText;
 
     return span;
 }
 
-function BUTTON(child, link, className, cssText) {
+function BUTTON(child, icon, link, className, cssText) {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = className;
     btn.style.cssText = cssText;
 
-    btn.appendChild(child);
+    if (child) btn.appendChild(child);
+    if (icon) btn.appendChild(icon);
 
     btn.addEventListener('click', () => openLink(link));
 
@@ -57,13 +51,7 @@ function DIV(children, className, cssText) {
     const div = document.createElement('div');
     div.className = className;
     div.style.cssText = cssText;
-
-    if (Array.isArray(children)) {
-        children.forEach(child => div.appendChild(child));
-    }
-    else {
-        div.appendChild(children);
-    }
+    div.appendChild(children);
 
     return div;
 }
