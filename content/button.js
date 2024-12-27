@@ -1,4 +1,4 @@
-function Button(text, icon, link) {
+function Button(text, icon, link, fallbackLink) {
     return DIV(
         DIV(
             DIV(
@@ -6,6 +6,7 @@ function Button(text, icon, link) {
                     SPAN(text, 'Button__labelItem'),
                     SPAN(icon, '', 'position: absolute; right: 1.5rem;'),
                     link,
+                    fallbackLink,
                     'Button Button--buy Button--medium Button--block dl-button',
                     'background: black; color: white; border: none; outline: none; box-shadow: none; user-select: none;'
                 ),
@@ -33,7 +34,7 @@ function SPAN(textContent, className, cssText) {
     return span;
 }
 
-function BUTTON(child, icon, link, className, cssText) {
+function BUTTON(child, icon, link, fallbackLink, className, cssText) {
     const btn = document.createElement('button');
     btn.type = 'button';
     btn.className = className;
@@ -43,6 +44,13 @@ function BUTTON(child, icon, link, className, cssText) {
     if (icon) btn.appendChild(icon);
 
     btn.addEventListener('click', () => openLink(link));
+
+    if (fallbackLink) {
+        btn.addEventListener('contextmenu', (event) => {
+            event.preventDefault();
+            openLink(fallbackLink);
+        });
+    }
 
     return btn;
 }
