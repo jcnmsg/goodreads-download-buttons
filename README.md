@@ -11,6 +11,7 @@ A browser extension that adds download buttons to book pages on Goodreads and au
 ## Features
 
 - Automatically adds download buttons to every book page on Goodreads
+- Left click on the Audiobook button searches AudioBook Bay
 - Left click on the eBook button searches Anna's Archive
 - Right click on the eBook button searches Libgen as a fallback
 - Clean integration with Goodreads' native UI
