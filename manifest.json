@@ -1,8 +1,8 @@
 {
     "manifest_version": 3,
-    "name": "Goodreads Download Button",
+    "name": "Goodreads Download Buttons",
     "version": "1.0.0",
-    "description": "Adds a Download button to Goodreads that searches on Anna's Archive and Libgen.",
+    "description": "Adds a Download button to Goodreads that searches on Anna's Archive, Libgen and AudioBook Bay.",
     "permissions": [
         "scripting",
         "webNavigation",
@@ -21,7 +21,7 @@
         }
     ],
     "action": {
-        "default_title": "Goodreads Download Button"
+        "default_title": "Goodreads Download Buttons"
     },
     "icons": {
         "16": "assets/icon.png",
