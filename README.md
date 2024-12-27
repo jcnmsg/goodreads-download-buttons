@@ -1,4 +1,4 @@
-# Goodreads Download Button
+# Goodreads Download Buttons
 
 A browser extension that adds download buttons to books on Goodreads and automatically opens a new tab with a search query on Anna's Archive and AudioBook Bay. Works with any Chromium-based browser (tested on Google Chrome and Microsoft Edge).
 
